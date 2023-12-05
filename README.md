@@ -2,7 +2,7 @@
 to run this application:
 *make sure that you have already installed these libraryies in python by using pip install "library name"
  flask,PIL,pytesseract,openai 
- ** Then from the CMD go to the project dir---> "cd desktop\cloud" in case the project installed in desktop
+ ** Then from the CMD go to the project dir---> "cd desktop\automatic-answer-evaluation\cloud" in case the project installed in desktop
  *** to run the project type --> python app.py 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

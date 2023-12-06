@@ -1,0 +1,103 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Analysis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('Image1.jpeg') center/cover fixed no-repeat rgba(240, 240, 240, 0.8);
+            backdrop-filter: blur(5px);
+            filter: contrast(1.2) brightness(0.8);
+        }
+
+        .upload-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #3498db;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-upload {
+            background-color: #e74c3c;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .upload-message {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .file-label {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        #teacherImageSection {
+            display: none; /* Initially hide the teacher's image upload section */
+        }
+
+        #teacherImageLabel {
+            display: none; /* Initially hide the label for teacher's image */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="upload-section">
+        <h1>Image Analysis</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data" onsubmit="showLoading()">
+            <div class="form-group">
+                <label for="studentImage" class="sr-only">Upload Student's Question Image:</label>
+                <input type="file" name="studentImage" accept="image/*" class="form-control" id="studentImage" required>
+                <p class="file-label">Upload Student's Question Image</p>
+            </div>
+            <div id="teacherImageSection" class="form-group">
+                <label for="teacherImage" id="teacherImageLabel" class="sr-only">Upload Teacher's Answer Image:</label>
+                <input type="file" name="teacherImage" accept="image/*" class="form-control" id="teacherImage" required>
+                <p class="file-label">Upload Teacher's Answer Image</p>
+            </div>
+            <button type="button" onclick="showTeacherImageSection()" class="btn btn-upload">Upload Teacher's Answer Image</button>
+            <button type="submit" class="btn btn-upload">Analyze Images</button>
+        </form>
+        <div id="loading" style="display:none;">Processing...</div>
+        <p class="upload-message">Upload a student's question image, and optionally, the teacher's answer image for analysis. We'll extract text and compare them.</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function showTeacherImageSection() {
+            // Show the teacher's image upload section and label
+            document.getElementById('teacherImageSection').style.display = 'block';
+            document.getElementById('teacherImageLabel').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

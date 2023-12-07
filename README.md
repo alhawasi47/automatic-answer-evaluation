@@ -12,3 +12,4 @@ flask,PIL,pytesseract,openai
  and after all things is run well  we will get a report exel sheet to summarise our evaluation 
  also eventually the user interfase and the front end part will be enhanced 
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+07/12/2023 2:56Pm Last Update the chat Gpt Api work fine

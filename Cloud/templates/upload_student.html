@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="h-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card card-registration my-4" style="border-radius: 25px;">
+                    <!-- ... (existing code) -->
+                    <div class="card-body p-md-5 text-black">
+                        <h3 class="mb-5 text-uppercase">Upload Your Answer</h3>
+
+                        <!-- File Upload Form -->
+                        <form method="post" action="/upload" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="studentName" class="form-label">Student Name</label>
+                                <input type="text" class="form-control" id="studentName" name="studentName"
+                                    placeholder="Enter student's name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="answerImage" class="form-label">Select Your Answer Image</label>
+                                <input type="file" class="form-control" id="answerImage" name="image"
+                                    accept="image/*" required>
+                            </div>
+                            <button type="submit" class="btn btn-danger">Upload</button>
+                        </form>
+
+                        <!-- New Review Button and Form -->
+                        <form method="post" action="/review_student">
+                            <div class="mb-3 mt-4">
+                                <label for="studentSearch" class="form-label">Search Student</label>
+                                <input type="text" class="form-control" id="studentSearch" name="studentSearch"
+                                    placeholder="Enter student's name" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Review</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

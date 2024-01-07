@@ -1,88 +1,35 @@
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %} {% block content %}
+<section class="vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Upload Teacher's Answer</p>
+                                <form method="post" action="/upload_teacher" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label for="image" class="form-label">Select Image</label>
+                                        <input type="file" class="form-control" id="image" name="image" accept="image/*"
+                                            required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Upload</button>
+                                </form>
+                                <div class="my-3">
+                                    <small class="text-danger">* You must upload teacher's answer before uploading answer's for evaluation</small>
+                                </div>
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Analysis</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: url('Image1.jpeg') center/cover fixed no-repeat rgba(240, 240, 240, 0.8);
-            backdrop-filter: blur(5px);
-            filter: contrast(1.2) brightness(0.8);
-        }
+                                <img src="/static/Image1.jpeg" class="img-fluid" alt="Sample image">
 
-        .upload-section {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #3498db;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .btn-upload {
-            background-color: #e74c3c;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .upload-message {
-            margin-top: 20px;
-            font-size: 16px;
-            color: #2c3e50;
-        }
-
-        .file-label {
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="upload-section">
-        <h1>Image Analysis</h1>
-        <form action="/upload" method="post" enctype="multipart/form-data" onsubmit="showLoading()">
-            <div class="form-group">
-                <label for="studentImage" class="sr-only">Upload Student's Question Image:</label>
-                <input type="file" name="studentImage" accept="image/*" class="form-control" id="studentImage" required>
-                <p class="file-label">Upload Student's Question Image</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="teacherImage" class="sr-only">Upload Teacher's Answer Image:</label>
-                <input type="file" name="teacherImage" accept="image/*" class="form-control" id="teacherImage" required>
-                <p class="file-label">Upload Teacher's Answer Image</p>
-            </div>
-            <button type="submit" class="btn btn-upload">Upload Images</button>
-        </form>
-        <div id="loading" style="display:none;">Processing...</div>
-        <p class="upload-message">Upload a student's question image and the teacher's answer image for analysis. We'll extract text and compare them.</p>
+        </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-
-</html>
+</section>
+{% endblock %}

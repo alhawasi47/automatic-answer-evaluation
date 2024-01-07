@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="h-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card card-registration my-4" style="border-radius: 25px;">
+                    <div class="card-body p-md-5 text-black">
+                        <h3 class="mb-5 text-uppercase">Search Student</h3>
+                        <form method="post" action="/search_student">
+                            <div class="mb-3">
+                                <label for="studentSearch" class="form-label">Enter Student Name</label>
+                                <input type="text" class="form-control" id="studentSearch" name="studentSearch"
+                                    placeholder="Enter student's name" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

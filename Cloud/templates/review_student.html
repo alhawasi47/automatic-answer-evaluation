@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<section class="h-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card card-registration my-4" style="border-radius: 25px;">
+                    <div class="card-body p-md-5 text-black">
+                        <h3 class="mb-4 text-uppercase">Student Information</h3>
+                        <p><strong>Student Name:</strong> {{ student_name }}</p>
+                        <p><strong>Extracted Answer:</strong> {{ extracted_text }}
+                            <img src="{{ url_for('uploaded_file', student_image=student_image) }}" alt="Student's Answer Image" style="max-width: 100%; height: auto;">
+
+
+                        </p>
+                        <!-- <a href="../{{ student_image }}" target="_blank">View Student's Answer Image</a> -->
+                        <!-- <img src="../{{student_image}}" alt="Student's Answer Image"> -->
+
+
+
+
+                        <!-- Form for submitting review -->
+                        <form method="post" action="/submit_review">
+                            <div class="mb-3 mt-4">
+                                <label for="reviewComment" class="form-label">Rate the OCR From (1 to 5) and add a comment if there is a  mistake in your extracted text:</label>
+                                <div class="mb-3">
+                                    <label for="rating" class="form-label">Rating:</label><br>
+                                    <input type="radio" id="rating1" name="rating" value="1">
+                                    <label for="rating1"><i class="fas fa-star"></i></label><br>
+                                    <input type="radio" id="rating2" name="rating" value="2">
+                                    <label for="rating2"><i class="fas fa-star"></i><i class="fas fa-star"></i></label><br>
+                                    <input type="radio" id="rating3" name="rating" value="3">
+                                    <label for="rating3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></label><br>
+                                    <input type="radio" id="rating4" name="rating" value="4">
+                                    <label for="rating4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></label><br>
+                                    <input type="radio" id="rating5" name="rating" value="5">
+                                    <label for="rating5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></label><br>
+                                </div>
+                                <textarea class="form-control" id="reviewComment" name="reviewComment" placeholder="Provide your review"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                        <!-- </form>
+                        
+                            <input type="hidden" name="studentName" value="{{ student_name }}">
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                        </form>
+                         -->
+                        
+                        <!-- Inside review_student.html -->
+
+                        <!-- Display student information -->
+                        <h4>Student Name: {{ student_name }}</h4>
+                        <!-- Display previous reviews if available -->
+                        {% if previous_reviews %}
+                        <hr>
+                        <h5 class="mt-4">Previous Reviews:</h5>
+                        <ul>
+                            {% for review in previous_reviews %}
+                            <li>{{ review }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
